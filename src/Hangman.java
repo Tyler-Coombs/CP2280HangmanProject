@@ -31,5 +31,39 @@ public class Hangman {
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
             System.out.println("Ready for player 2! Good luck!");
         }
+        //System.out.println(word);
+        
+        List<Character> playerGuesses = new ArrayList<>();
+
+        Integer wrongCount = 0;
+
+        while(true) {
+            printHangedMan(wrongCount);
+
+            if (wrongCount >= 6) {
+                System.out.println("You lose!");
+                System.out.println("The word was: " + word);
+                break;
+            }
+
+            printWordState(word, playerGuesses);
+            if (!getPlayerGuess(keyboard, word, playerGuesses)) {
+                wrongCount++;
+            }
+
+            if(printWordState(word, playerGuesses)) {
+                System.out.println("You win!");
+                break;
+            }
+
+            System.out.println("Please enter your guess for the word:");
+            if(keyboard.nextLine().equals(word)) {
+                System.out.println("You win!");
+                break;
+            }
+            else {
+                System.out.println("Nope! Try again.");
+            }
+        }
     }
 }
