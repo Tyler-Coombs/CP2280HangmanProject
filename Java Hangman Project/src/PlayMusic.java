@@ -1,40 +1,10 @@
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 
-public class PlayMusic {
-    private Clip clip;
-    public PlayMusic(String s) {
-        try {
 
-            AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getResourceAsStream(s));
-            AudioFormat baseFormat = ais.getFormat();
-            AudioFormat decodeFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED,
-                    baseFormat.getSampleRate(),16,baseFormat.getChannels(),
-                    baseFormat.getChannels() * 2,
-                    baseFormat.getSampleRate(),false);
+/*public class PlayMusic {
+    File file = new File(filePath + ".mp3");
+    Clip clip = AudioSystem.getClip();
+    clip.open(AudioSystem.getAudioInputStream(file));
+    clip.start();
+    Thread.sleep(time);
 
-            AudioInputStream dais = AudioSystem.getAudioInputStream(decodeFormat, ais);
-            clip = AudioSystem.getClip();
-            clip.open(dais);
-        } catch( Exception e ) {
-            e.printStackTrace();
-        }
-    }
-
-    public void play() {
-        if(clip == null) return;
-        stop();
-
-    }
-
-    private void stop() {
-        if(clip.isRunning()) clip.stop();
-    }
-
-    public void close() {
-        stop();
-        clip.close();
-    }
-}
+}*/
