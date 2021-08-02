@@ -10,43 +10,46 @@ public class Hangman {
 
         System.out.println("HANGMAN\n");
 
-        System.out.print("Choose game mode: hard, medium, easy >> ");
-        difficulty = keyboard.nextLine();
-        if (difficulty.toLowerCase().equals("hard")) {
-            Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/HardWords.txt"));
-            List<String> words = new ArrayList<>();
+        while (true) {
+            System.out.print("Choose game mode: hard, medium, easy >> ");
+            difficulty = keyboard.nextLine();
+            if (difficulty.toLowerCase().equals("hard")) {
+                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/HardWords.txt"));
+                List<String> words = new ArrayList<>();
 
-            while (scanner.hasNext()) {
-                words.add(scanner.nextLine());
+                while (scanner.hasNext()) {
+                    words.add(scanner.nextLine());
+                }
+
+                Random rand = new Random();
+                word = words.get(rand.nextInt(words.size()));
+                break;
+            } else if (difficulty.toLowerCase().equals("medium")) {
+                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/MediumWords.txt"));
+                List<String> words = new ArrayList<>();
+
+                while (scanner.hasNext()) {
+                    words.add(scanner.nextLine());
+                }
+
+                Random rand = new Random();
+                word = words.get(rand.nextInt(words.size()));
+                break;
+            } else if (difficulty.toLowerCase().equals("easy")) {
+                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/EasyWords.txt"));
+                List<String> words = new ArrayList<>();
+
+                while (scanner.hasNext()) {
+                    words.add(scanner.nextLine());
+                }
+
+                Random rand = new Random();
+                word = words.get(rand.nextInt(words.size()));
+                break;
+            } else {
+                System.out.println("Invalid game mode choice.");
+                continue;
             }
-
-            Random rand = new Random();
-            word = words.get(rand.nextInt(words.size()));
-        }
-        else if (difficulty.toLowerCase().equals("medium")) {
-            Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/MediumWords.txt"));
-            List<String> words = new ArrayList<>();
-
-            while (scanner.hasNext()) {
-                words.add(scanner.nextLine());
-            }
-
-            Random rand = new Random();
-            word = words.get(rand.nextInt(words.size()));
-        }
-        else if (difficulty.toLowerCase().equals("easy")) {
-            Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/EasyWords.txt"));
-            List<String> words = new ArrayList<>();
-
-            while (scanner.hasNext()) {
-                words.add(scanner.nextLine());
-            }
-
-            Random rand = new Random();
-            word = words.get(rand.nextInt(words.size()));
-        }
-        else {
-            System.out.println("Invalid game mode choice.");
         }
 
         List<Character> playerGuesses = new ArrayList<>();
