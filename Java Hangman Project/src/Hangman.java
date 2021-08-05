@@ -1,6 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Hangman {
     public static void main(String[] args) throws FileNotFoundException {
@@ -14,7 +17,7 @@ public class Hangman {
             System.out.print("Choose game mode: hard, medium, easy >> ");
             difficulty = keyboard.nextLine();
             if (difficulty.toLowerCase().equals("hard")) {
-                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/HardWords.txt"));
+                Scanner scanner = new Scanner(new File("HardWords.txt"));
                 List<String> words = new ArrayList<>();
 
                 while (scanner.hasNext()) {
@@ -25,7 +28,7 @@ public class Hangman {
                 word = words.get(rand.nextInt(words.size()));
                 break;
             } else if (difficulty.toLowerCase().equals("medium")) {
-                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/MediumWords.txt"));
+                Scanner scanner = new Scanner(new File("MediumWords.txt"));
                 List<String> words = new ArrayList<>();
 
                 while (scanner.hasNext()) {
@@ -36,7 +39,7 @@ public class Hangman {
                 word = words.get(rand.nextInt(words.size()));
                 break;
             } else if (difficulty.toLowerCase().equals("easy")) {
-                Scanner scanner = new Scanner(new File("/Users/tylercoombs/Desktop/Java Hangman Project/EasyWords.txt"));
+                Scanner scanner = new Scanner(new File("EasyWords.txt"));
                 List<String> words = new ArrayList<>();
 
                 while (scanner.hasNext()) {
